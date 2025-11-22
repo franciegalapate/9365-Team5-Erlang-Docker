@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  erlang_app:
+    container_name: erlang_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: erlang_app:latest
+
+    command: ["erl", "-noshell", "-s", "main", "start", "-s", "init", "stop"]
+
+    volumes:
+      - ./:/app
+
+    working_dir: /app
+
+    ports:
+      - "8080:8080"     # if you use Cowboy or any webserver
+      - "4369:4369"     # EPMD (Distributed Erlang)
+
+    environment:
+      ERLANG_COOKIE: "mycookie"
+
+    networks:
+      - erlang_net
+
+networks:
+  erlang_net:
+    driver: bridge
