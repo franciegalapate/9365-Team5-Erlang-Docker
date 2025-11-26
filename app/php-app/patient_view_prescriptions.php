@@ -12,7 +12,7 @@ if ($_SESSION['account_type'] !== 'patient') {
     exit;
 }
 
-require_once 'db_connect.php';
+require_once __DIR__ . '/db_connect.php';
 
 // Get patient ID from session
 $patient_id = $_SESSION['user_id'];
@@ -82,7 +82,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Prescriptions</title>
-    <link rel="stylesheet" href="../css/patient_view_prescriptions.css">
+    <link rel="stylesheet" href="../assets/css/patient_view_prescriptions.css">
 </head>
 <body>
     <div class="main-container">
@@ -174,6 +174,6 @@ $conn->close();
     <script>
         const allPrescriptions = <?php echo json_encode($prescriptions); ?>;
     </script>
-    <script src="../js/patient_view_prescriptions.js" defer></script>
+    <script src="../assets/js/patient_view_prescriptions.js" defer></script>
 </body>
 </html>

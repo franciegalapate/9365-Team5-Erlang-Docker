@@ -1,4 +1,4 @@
-const API_URL = '../../php/login_handler.php';
+const API_URL = '/login_handler.php';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         redirectUrl = '../html/pharmacist_search_prescription.php';   // Update to correct pharmacist dashboard
                         break;
                     case 'patient':
-                        redirectUrl = 'patient_view_prescriptions.php';  // Update to correct patient dashboard
+                        redirectUrl = '/patient_view_prescriptions.php';  // Update to correct patient dashboard
                         break;
                 }
                 
