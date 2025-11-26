@@ -1,22 +1,11 @@
-# Dockerfile.nodejs
 FROM node:20-alpine
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Copy package files and install dependencies first (cache friendly)
 COPY app/node-app/package*.json ./
-RUN npm ci --only=production
+RUN npm install --only=production
 
-# Copy app source
 COPY app/node-app/ ./
 
-# Expose port the app listens on
 EXPOSE 3000
-
-# Use a non-root user
-RUN addgroup app && adduser -S -G app app
-USER app
-
-# Start the app
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
