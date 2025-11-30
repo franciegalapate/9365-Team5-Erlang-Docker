@@ -3,7 +3,7 @@ session_start();
 
 // Check if user is logged in and is a patient
 if (!isset($_SESSION['account_type'])) {
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
 }
 
